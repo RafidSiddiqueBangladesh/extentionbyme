@@ -1,0 +1,322 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism Design System - Premium SaaS Aesthetic */
+
+@layer base {
+  :root {
+    /* Base colors - Dark theme optimized for glass effects */
+    --background: 240 20% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 15% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 15% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Vibrant Indigo */
+    --primary: 239 84% 67%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Violet */
+    --secondary: 280 80% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent - Cyan */
+    --accent: 188 95% 55%;
+    --accent-foreground: 240 20% 4%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 15%;
+    --ring: 239 84% 67%;
+
+    --radius: 1rem;
+
+    /* Glassmorphism specific */
+    --glass-bg: 240 15% 12% / 0.4;
+    --glass-border: 240 20% 50% / 0.2;
+    --glass-shadow: 240 80% 5% / 0.5;
+    
+    /* Gradient colors */
+    --gradient-start: 239 84% 67%;
+    --gradient-mid: 280 80% 60%;
+    --gradient-end: 188 95% 55%;
+
+    /* Glow effects */
+    --glow-primary: 239 84% 67% / 0.5;
+    --glow-secondary: 280 80% 60% / 0.4;
+    --glow-accent: 188 95% 55% / 0.4;
+
+    --sidebar-background: 240 15% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 10% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 10% 20%;
+    --sidebar-ring: 239 84% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass {
+    @apply relative backdrop-blur-xl border rounded-2xl;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg)),
+      hsl(240 15% 8% / 0.6)
+    );
+    border-color: hsl(var(--glass-border));
+    box-shadow: 
+      0 8px 32px hsl(var(--glass-shadow)),
+      inset 0 1px 0 hsl(240 100% 100% / 0.05);
+  }
+
+  .glass-strong {
+    @apply glass;
+    background: linear-gradient(
+      135deg,
+      hsl(240 15% 15% / 0.6),
+      hsl(240 15% 10% / 0.8)
+    );
+    border-color: hsl(240 20% 40% / 0.3);
+  }
+
+  .glass-card {
+    @apply glass p-6 transition-all duration-500;
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-1;
+    box-shadow: 
+      0 20px 40px hsl(var(--glass-shadow)),
+      0 0 60px hsl(var(--glow-primary)),
+      inset 0 1px 0 hsl(240 100% 100% / 0.1);
+    border-color: hsl(var(--glow-primary));
+  }
+
+  /* Glass Buttons */
+  .btn-glass {
+    @apply relative px-8 py-4 rounded-xl font-semibold text-foreground;
+    @apply backdrop-blur-md transition-all duration-300;
+    @apply border border-white/10;
+    background: linear-gradient(
+      135deg,
+      hsl(240 15% 20% / 0.5),
+      hsl(240 15% 15% / 0.3)
+    );
+  }
+
+  .btn-glass:hover {
+    @apply -translate-y-0.5;
+    background: linear-gradient(
+      135deg,
+      hsl(240 15% 25% / 0.6),
+      hsl(240 15% 20% / 0.4)
+    );
+    box-shadow: 0 10px 40px hsl(var(--glow-primary));
+  }
+
+  .btn-glass-primary {
+    @apply btn-glass;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.8),
+      hsl(var(--secondary) / 0.6)
+    );
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .btn-glass-primary:hover {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary) / 0.8)
+    );
+    box-shadow: 
+      0 10px 40px hsl(var(--glow-primary)),
+      0 0 20px hsl(var(--glow-secondary));
+  }
+
+  /* Animated Gradient Background */
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(240 30% 8%) 0%,
+      hsl(260 40% 12%) 25%,
+      hsl(280 35% 10%) 50%,
+      hsl(240 30% 8%) 75%,
+      hsl(200 40% 10%) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Glow text */
+  .text-glow {
+    text-shadow: 0 0 40px hsl(var(--glow-primary));
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--secondary)) 50%,
+      hsl(var(--accent)) 100%
+    );
+  }
+
+  /* Neon border glow */
+  .border-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-primary)),
+      inset 0 0 20px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .border-glow-accent {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-accent)),
+      inset 0 0 20px hsl(var(--glow-accent) / 0.1);
+  }
+
+  /* Icon glow circle */
+  .icon-glow {
+    @apply relative rounded-full p-4;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.2),
+      hsl(var(--secondary) / 0.1)
+    );
+    box-shadow: 
+      0 0 30px hsl(var(--glow-primary)),
+      inset 0 0 20px hsl(var(--glow-primary) / 0.2);
+  }
+
+  /* Video frame */
+  .video-glass-frame {
+    @apply glass-strong rounded-2xl p-1 overflow-hidden;
+    box-shadow: 
+      0 20px 60px hsl(var(--glass-shadow)),
+      0 0 40px hsl(var(--glow-accent) / 0.2);
+  }
+
+  /* Slider animations */
+  .slider-track {
+    display: flex;
+    animation: scroll-left 30s linear infinite;
+  }
+
+  .slider-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@layer utilities {
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Particle animations */
+  .animate-particle {
+    animation: particle-float 20s linear infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.5;
+    box-shadow: 0 0 20px hsl(var(--glow-primary));
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 40px hsl(var(--glow-primary)), 0 0 60px hsl(var(--glow-secondary));
+  }
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(10px) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10vh) translateX(-10px) scale(1);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
