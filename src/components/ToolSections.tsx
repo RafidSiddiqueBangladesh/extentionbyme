@@ -230,7 +230,7 @@ const toolsData: ToolSectionProps[] = [
     icon: Zap,
     videoId: "tHvdSP-UQyI",
     requiresApi: false,
-    mockupImage: "/src/pic/certificate  generator.png",
+    mockupImage: "/images/certificate  generator.png",
     howToUse: [
       "Install the extension and start watching videos",
       "Progress is tracked automatically in the sidebar",
@@ -247,7 +247,7 @@ const toolsData: ToolSectionProps[] = [
     icon: Zap,
     videoId: "P0tXHG_hL2U",
     requiresApi: false,
-    mockupImage: "/src/pic/speed.png",
+    mockupImage: "/images/speed.png",
     howToUse: [
       "Click the extension icon to open speed controls",
       "Use preset buttons or the custom slider",
@@ -264,7 +264,7 @@ const toolsData: ToolSectionProps[] = [
     icon: Shield,
     videoId: "Shywq1sdEkE",
     requiresApi: false,
-    mockupImage: "/src/pic/tech detector.png",
+    mockupImage: "/images/tech detector.png",
     howToUse: [
       "Click the extension icon on any website",
       "View detected technologies in the popup",
@@ -281,7 +281,7 @@ const toolsData: ToolSectionProps[] = [
     icon: BarChart3,
     videoId: "DmW0EJFrrLg",
     requiresApi: false,
-    mockupImage: "/src/pic/youtibe and fb.png",
+    mockupImage: "/images/youtibe and fb.png",
     howToUse: [
       "Visit any YouTube video or Facebook post",
       "Click the extension icon to extract data",
@@ -298,7 +298,7 @@ const toolsData: ToolSectionProps[] = [
     icon: Brain,
     videoId: "wwU0an5cXFg",
     requiresApi: true,
-    mockupImage: "/src/pic/letcodesolver.png",
+    mockupImage: "/images/letcodesolver.png",
     howToUse: [
       "Enter your OpenAI or Google API key in settings",
       "Open any LeetCode problem",

@@ -1,6 +1,7 @@
 // Handle both local and Google Drive image URLs
 export const getGoogleDriveImageUrl = (imageUrl: string): string => {
-  // If it's a local path, return as is
+  // If it's a public folder path (starts with /), return as is
+  // This works for Netlify deployment
   if (imageUrl.startsWith("/")) {
     return imageUrl;
   }
