@@ -1,35 +1,5 @@
-import { Chrome, Zap, Shield, BarChart3, Eye } from "lucide-react";
-
-const tools = [
-  {
-    id: 1,
-    name: "Speed Analyzer",
-    description: "Analyze and optimize website loading performance instantly",
-    icon: Zap,
-    color: "primary",
-  },
-  {
-    id: 2,
-    name: "Privacy Guard",
-    description: "Protect your browsing data with advanced security features",
-    icon: Shield,
-    color: "secondary",
-  },
-  {
-    id: 3,
-    name: "Analytics Pro",
-    description: "Track your productivity metrics and browsing patterns",
-    icon: BarChart3,
-    color: "accent",
-  },
-  {
-    id: 4,
-    name: "Focus Mode",
-    description: "Block distractions and stay focused on what matters",
-    icon: Eye,
-    color: "primary",
-  },
-];
+import { tools } from "@/data/tools";
+import { Eye } from "lucide-react";
 
 const ToolsSlider = () => {
   const scrollToTool = (id: number) => {
