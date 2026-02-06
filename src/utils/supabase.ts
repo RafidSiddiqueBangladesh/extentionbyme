@@ -38,7 +38,7 @@ export const incrementDownloadCount = async (extensionId: number): Promise<Downl
 // Fetch all download counts
 export const fetchDownloadCounts = async (): Promise<Record<number, number>> => {
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/download`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/dpwnload`, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
       },
