@@ -1,7 +1,7 @@
 // Supabase configuration
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "";
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
-const EDGE_FUNCTION_URL = `${SUPABASE_URL}/functions/v1/increment-download`;
+const EDGE_FUNCTION_URL = `${SUPABASE_URL}/functions/v1/incement-download`;
 
 export interface DownloadData {
   id: number;
@@ -38,7 +38,7 @@ export const incrementDownloadCount = async (extensionId: number): Promise<Downl
 // Fetch all download counts
 export const fetchDownloadCounts = async (): Promise<Record<number, number>> => {
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/dpwnload`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/extension_downloads`, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
       },
