@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Download, ChevronDown, ChevronUp, Check, AlertCircle, Play, Zap, Shield, BarChart3, Eye, Brain, X } from "lucide-react";
 import { getGoogleDriveImageUrl } from "@/utils/googleDrive";
+import { incrementDownloadCount, fetchDownloadCounts } from "@/utils/supabase";
 
 interface ToolSectionProps {
   id: number;
@@ -47,13 +48,15 @@ const ToolSection = ({
     }
   }, [id]);
 
-  const handleDownload = () => {
-    const newCount = downloadCount + 1;
-    setDownloadCount(newCount);
-    localStorage.setItem(`extension_downloads_${id}`, newCount.toString());
+  const handleDownload = async () => {
+    // Increment in Supabase
+    const result = await incrementDownloadCount(id);
     
-    // Dispatch custom event for counter updates
-    window.dispatchEvent(new CustomEvent("extension_downloaded", { detail: { id, count: newCount } }));
+    if (result) {
+      setDownloadCount(result.count);
+      // Dispatch custom event for counter updates
+      window.dispatchEvent(new CustomEvent("extension_downloaded", { detail: { id, count: result.count } }));
+    }
     
     // Trigger ZIP download
     if (zipUrl) {
@@ -314,13 +317,13 @@ const ToolSections = () => {
   const [isCounterOpen, setIsCounterOpen] = useState(false);
 
   useEffect(() => {
-    // Load all download counts
-    const counts: Record<number, number> = {};
-    toolsData.forEach((tool) => {
-      const stored = localStorage.getItem(`extension_downloads_${tool.id}`);
-      counts[tool.id] = stored ? parseInt(stored) : 0;
-    });
-    setAllDownloads(counts);
+    // Load all download counts from Supabase
+    const loadCounts = async () => {
+      const counts = await fetchDownloadCounts();
+      setAllDownloads(counts);
+    };
+    
+    loadCounts();
 
     // Listen for download events
     const handleDownload = (e: CustomEvent) => {
